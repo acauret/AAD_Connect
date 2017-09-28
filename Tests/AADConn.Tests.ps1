@@ -7,8 +7,8 @@
     Actions:
 TBC.NOTES
     Script Name     : AADConn.Tests.ps1
-    Requires        : Powershell Version 5.0
-    Tested          : Powershell Version 5.0
+    Requires        : Powershell Version 4.0
+    Tested          : Powershell Version 4.0
     Author          : Andrew.Auret
     Version         : 1.6
     Date            : 2017-08-02 (ISO 8601 standard date notation: YYYY-MM-DD) 
@@ -25,7 +25,7 @@ Change Mode to 'Secondary' for Staging server
 Runs PreRequisites tests Only - RUN 1st
     Invoke-Pester -Script @{Path = '.\.\AADConn.Tests.ps1'; Parameters = @{skip = $True;Mode = 'Primary'}} -Tag PreReqs
 ------------------------------------------------------------------------------------------------------------------------------------
-Runs Iintial Install  tests Only - Run After Install of AADConnect
+Runs Intial Install  tests Only - Run After Install of AADConnect
     Invoke-Pester -Script @{Path = '.\.\AADConn.Tests.ps1'; Parameters = @{skip = $True;Mode = 'Primary'}} -Tag Initial, Install
 ------------------------------------------------------------------------------------------------------------------------------------
 Runs ADSyncConnector tests Only - Run after configuring Rules
@@ -95,32 +95,23 @@ Describe -Tag PreReqs "PreRequisites"{
         It "should be Windows Server 2012 R2 or later"{
             (Get-CimInstance -computername $Target Win32_OperatingSystem).Version | Should BeGreaterThan 6.3
         }
+        It "has full GUI installed"{
+            (Get-WindowsFeature -Name "Server-Gui-Shell").InstallState | Should Be "Installed"
+            (Get-WindowsFeature -Name "Server-Gui-Mgmt-Infra").InstallState | Should Be "Installed"
+        }
         It "has PowerShell Version 3.0 or later installed"{
             $PSVersionTable.PSVersion.Major | Should BeGreaterThan 3
         }
         It "has .NET Framework 4.5.1 or later installed"{
             (Get-ItemProperty 'REGISTRY::HKLM\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full').Release | Should BeGreaterThan 378674
         }
-        It "has full GUI installed"{
-            (Get-WindowsFeature -Name "Server-Gui-Shell").InstallState | Should Be "Installed"
-            (Get-WindowsFeature -Name "Server-Gui-Mgmt-Infra").InstallState | Should Be "Installed"
-        }
         It "the Secondary Logon service is not disabled"{
             (Get-CimInstance Win32_Service -filter "Name='seclogon'").StartMode | Should Not Be "Disabled"
         }
 
-        It "has connectivity with the Proxy / Internet"{
+        It "has connectivity with the Internet"{
             $test = Invoke-WebRequest -Uri https://adminwebservice.microsoftonline.com/ProvisioningService.svc -ErrorAction SilentlyContinue
              $test.StatusCode | Should Be 200
-        }
-
-        It "has TLS 1.2 enabled" -skip:$Skip{
-            $regvalue = Invoke-Command -ScriptBlock {Test-path "REGISTRY::HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2" -ErrorAction SilentlyContinue}
-            $regvalue | Should Be $True
-        }
-        It "has strong cryptography enabled" -skip:$Skip{
-            $regvalue = Invoke-Command -ScriptBlock {(Get-ItemProperty -Path "Registry::HKLM\SOFTWARE\Microsoft\.NETFramework\v4.0.30319" -Name SchUseStrongCrypto  -ErrorAction Ignore).SchUseStrongCrypto}
-            $regvalue | Should Be 1
         }
     }
 }
