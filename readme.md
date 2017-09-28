@@ -1,5 +1,5 @@
 # Azure AD Connect - Testing your installation
-![AADConnect](./tests/media/upgdirsynctoadconnect01.jpg)
+![AADConnect](./media/upgdirsynctoadconnect01.jpg)
 
 ## PreRequisite Software
 - Install the current stable release of [Pester](https://www.powershellgallery.com/packages/Pester) from PowerShell Gallery
