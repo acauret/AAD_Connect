@@ -48,3 +48,14 @@ Invoke-Pester -Script @{Path = '.\.\AADConn.Tests.ps1'; Parameters = @{skip = $T
 ```Powershell
 Invoke-Pester -Script @{Path = '.\.\AADConn.Tests.ps1'; Parameters = @{skip = $True;Mode = 'Primary'}} -Tag ADSync
 ```
+
+## Final Check after sync enabled
+> This Runs ALL tests and skip InitialInstall
+
+```Powershell
+Invoke-Pester -Script @{Path = '.\.\AADConn.Tests.ps1'; Parameters = @{skip = $True;Mode = 'Primary'}}  -ExcludeTag Initial
+```
+
+
+
+
