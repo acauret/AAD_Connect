@@ -1,0 +1,38 @@
+<Rules>
+  <Name caption='In from AD LDS - User Join'>
+    <immutableTag>CustomerName.InfromAdLdsUserJoin.001</immutableTag>
+    <description>NoneSet</description>
+    <Direction>Inbound</Direction>
+    <SourceObjectType>userProxy</SourceObjectType>
+    <identifier>476001b9-792f-4a59-b4ae-990a576c664c</identifier>
+    <TargetObjectType>person</TargetObjectType>
+    <Precedence>41</Precedence>
+  </Name>
+  <Name caption='In from AD LDS - User Common'>
+    <immutableTag>CustomerName.InfromAdLdsUserCommon.001</immutableTag>
+    <description>NoneSet</description>
+    <Direction>Inbound</Direction>
+    <SourceObjectType>userProxy</SourceObjectType>
+    <identifier>d3b1abdd-c404-492a-a2aa-82dc385588f8</identifier>
+    <TargetObjectType>person</TargetObjectType>
+    <Precedence>42</Precedence>
+  </Name>
+  <Name caption='In from AD LDS - Group Join'>
+    <immutableTag>CustomerName.InfromAdLdsGroupJoin.001</immutableTag>
+    <description>NoneSet</description>
+    <Direction>Inbound</Direction>
+    <SourceObjectType>group</SourceObjectType>
+    <identifier>e002b17e-77b8-4a92-b297-8043b7a697f2</identifier>
+    <TargetObjectType>group</TargetObjectType>
+    <Precedence>56</Precedence>
+  </Name>
+  <Name caption='In from AD LDS - Group Common'>
+    <immutableTag>CustomerName.InfromAdLdsGroupCommon.001</immutableTag>
+    <description>NoneSet</description>
+    <Direction>Inbound</Direction>
+    <SourceObjectType>group</SourceObjectType>
+    <identifier>90f5c69b-c5f1-4a6e-9df3-89714d03e681</identifier>
+    <TargetObjectType>group</TargetObjectType>
+    <Precedence>57</Precedence>
+  </Name>
+</Rules>

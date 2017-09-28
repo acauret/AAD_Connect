@@ -1,0 +1,11 @@
+<Rules>
+  <Name caption='CustomerName - In from AD - User Common'>
+    <immutableTag>CustomerName.InfromAddsUserCommon.001</immutableTag>
+    <description>NoneSet</description>
+    <Direction>Inbound</Direction>
+    <SourceObjectType>user</SourceObjectType>
+    <identifier>d4bfcb28-b555-46f8-8757-3d13b8857fab</identifier>
+    <TargetObjectType>person</TargetObjectType>
+    <Precedence>71</Precedence>
+  </Name>
+</Rules>
