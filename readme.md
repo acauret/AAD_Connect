@@ -16,7 +16,7 @@
 - has connectivity with the Internet
 
 ```powershell
-Invoke-Pester -Script @{Path = '.\.\AADConn.Tests.ps1'; Parameters = @{skip = $True;Mode = 'Primary'}} -Tag PreReqs
+Invoke-Pester -Script @{Path = '.\AADConn.Tests.ps1'; Parameters = @{skip = $True;Mode = 'Primary'}} -Tag PreReqs
 ```
 
 ### Post Installation tests
@@ -28,7 +28,7 @@ Invoke-Pester -Script @{Path = '.\.\AADConn.Tests.ps1'; Parameters = @{skip = $T
 - the 'Azure AD Connect Health Sync Monitoring Service' is installed and running
 - the AAD Connect auto upgrade state is disabled
 ```Powershell
-Invoke-Pester -Script @{Path = '.\.\AADConn.Tests.ps1'; Parameters = @{skip = $True;Mode = 'Primary'}} -Tag Initial, Install
+Invoke-Pester -Script @{Path = '.\AADConn.Tests.ps1'; Parameters = @{skip = $True;Mode = 'Primary'}} -Tag Initial, Install
 ```
 
 ## ADSyncConnector tests
@@ -46,14 +46,14 @@ Invoke-Pester -Script @{Path = '.\.\AADConn.Tests.ps1'; Parameters = @{skip = $T
 - ADLDS Rule Checks from XML
 - Generic LDAP (Microsoft) Connector check
 ```Powershell
-Invoke-Pester -Script @{Path = '.\.\AADConn.Tests.ps1'; Parameters = @{skip = $True;Mode = 'Primary'}} -Tag ADSync
+Invoke-Pester -Script @{Path = '.\AADConn.Tests.ps1'; Parameters = @{skip = $True;Mode = 'Primary'}} -Tag ADSync
 ```
 
 ## Final Check after sync enabled
 > This Runs ALL tests and skip InitialInstall
 
 ```Powershell
-Invoke-Pester -Script @{Path = '.\.\AADConn.Tests.ps1'; Parameters = @{skip = $True;Mode = 'Primary'}}  -ExcludeTag Initial
+Invoke-Pester -Script @{Path = '.\AADConn.Tests.ps1'; Parameters = @{skip = $True;Mode = 'Primary'}}  -ExcludeTag Initial
 ```
 
 
